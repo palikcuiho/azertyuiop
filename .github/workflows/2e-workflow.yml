@@ -8,6 +8,6 @@ jobs :
     name : "echoo"
     runs-on : ubuntu-latest
     steps :
-      - run : echo "${{toJSON(github.event)}}"
+      - run : echo "Nouvelle issue - ${{toJSON(github.event.issue.title)}} "
 
 

@@ -5,7 +5,7 @@ on:
 
 jobs:
   job1:
-    uses: palikcuiho/azertyuiop/.github/workflows/aaa.yml@v*
+    uses: palikcuiho/azertyuiop/.github/workflows/aaa.yml
 
   job2:
     runs-on: ubuntu-latest

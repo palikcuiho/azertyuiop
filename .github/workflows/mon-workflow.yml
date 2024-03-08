@@ -2,7 +2,7 @@ name: "Premier workflow"
 on: push
 jobs:
   lint:
-    name: "Premier job : lint"
+    name: "Premier job de ${{ github.actor }} : lint"
     runs-on: ubuntu-latest
     steps:
       - name: "Récupère le code"
@@ -13,7 +13,7 @@ jobs:
         run: npm run lint
   test:
     needs: lint
-    name: "2e job : test"
+    name: "2e job pour ${{ github.repository }} : test"
     runs-on: ubuntu-latest
     steps:
     - name: "Récupère le code"

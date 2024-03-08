@@ -22,17 +22,16 @@ jobs:
       run: npm ci
     - name: "Exécute les tests"
       run: npm run test
-
   deploy:
-  needs: test
-  name: "3e job : déploiement"
-  runs-on: ubuntu-latest
-  steps:
-    - name: "Récupère le code"
-      uses: actions/checkout@v4
-    - name: "Installe les dépendances"
-      run: npm ci
-    - name: "Build le code"
-      run: npm run build
-    - name: "Déploiement"
-      run: echo "En cours de déploiement..."
+    needs: test
+    name: "3e job : déploiement"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Récupère le code"
+        uses: actions/checkout@v4
+      - name: "Installe les dépendances"
+        run: npm ci
+      - name: "Build le code"
+        run: npm run build
+      - name: "Déploiement"
+        run: echo "En cours de déploiement..."

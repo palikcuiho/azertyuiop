@@ -1,0 +1,12 @@
+name: "Workflow de folie"
+on: 
+  issues:
+    types: 
+      - opened
+job1:
+  name : "echo"
+  runs-on : ubuntu-latest
+  steps :
+    run : echo "${{github.event}}"
+
+

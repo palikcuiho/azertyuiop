@@ -5,7 +5,7 @@ on:
       - opened
 jobs : 
   job1:
-    name : "echo"
+    name : "echoo"
     runs-on : ubuntu-latest
     steps :
       - run : echo "${{github.event}}"

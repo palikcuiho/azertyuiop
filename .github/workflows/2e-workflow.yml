@@ -3,10 +3,11 @@ on:
   issues:
     types: 
       - opened
-job1:
-  name : "echo"
-  runs-on : ubuntu-latest
-  steps :
-    run : echo "${{github.event}}"
+jobs : 
+  job1:
+    name : "echo"
+    runs-on : ubuntu-latest
+    steps :
+      run : echo "${{github.event}}"
 
 

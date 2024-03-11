@@ -8,7 +8,6 @@ jobs :
     name : "echoo"
     runs-on : ubuntu-latest
     steps :
-      - run : echo Nouvelle issue - ${{ github.event.issue.title}}
-      - run : echo ${{ github.event.issue.html_url }}
+      - run : echo "Nouvelle issue - ${{ github.event.issue.title}}\n${{ github.event.issue.html_url }}"
 
 

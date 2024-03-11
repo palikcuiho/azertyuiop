@@ -1,8 +1,7 @@
 name: Workflow réutilisé
 
-on:
-  # Lorsque le workflow est appelé
-  workflow_call:
+on:  
+  workflow_call: # Déclencheur : lorsque le workflow est appelé
     # Map les outputs du workflow avec les outputs du job
     outputs:
       variable1:
@@ -22,6 +21,6 @@ jobs:
       sortie2: ${{ steps.etape2.outputs.variable2 }}
     steps:
       - id: etape1
-        run: echo "variable1=hello" >> $GITHUB_OUTPUT
+        run: echo "variable1=Hello" >> $GITHUB_OUTPUT
       - id: etape2
-        run: echo "variable2=world" >> $GITHUB_OUTPUT
+        run: echo "variable2=world!" >> $GITHUB_OUTPUT

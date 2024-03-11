@@ -5,9 +5,11 @@ on:
 
 jobs:
   premier_job:
+    name: Appelle le 1er workflow
     uses: palikcuiho/azertyuiop/.github/workflows/aaa.yml@main
 
   deuxieme_job:
+    name: Affiche les outputs du 1er workflow
     runs-on: ubuntu-latest
     needs: premier_job
     steps:

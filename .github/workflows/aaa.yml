@@ -24,5 +24,5 @@ jobs:
         run: echo "variable1=Hello" >> $GITHUB_OUTPUT
       - id: etape2
         run: echo "variable2=world!" >> $GITHUB_OUTPUT
-      - id: echo_output
-        run: echo $GITHUB_OUTPUT
+      - id: view_output
+        run: cat $GITHUB_OUTPUT

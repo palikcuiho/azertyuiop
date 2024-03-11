@@ -17,7 +17,8 @@ jobs:
   job1:
     name: Génère les paramètres de sortie
     runs-on: ubuntu-latest
-    outputs: # Définit les outputs du job job1, en les mappant avec les outputs des steps etape1 et etape2
+    outputs: # Définit les outputs sortie1 et sortie2 du job job1
+             # en les mappant avec les outputs var1 et var2 des steps etape1 et etape2
       sortie1: ${{ steps.etape1.outputs.var1 }}
       sortie2: ${{ steps.etape2.outputs.var2 }}
     steps:

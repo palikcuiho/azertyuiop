@@ -7,17 +7,17 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Get code
+      - name: Récupère le code
         uses: actions/checkout@v4
-      - name: Use Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           cache: 'npm'
-      - name: Install dependencies
+      - name: Installe les dépendances
         run: npm ci
-      - name: Lint code
+      - name: Lint
         run: npm run lint
-      - name: Test code
+      - name: Test
         run: npm run test
   build:
     needs: test
@@ -25,24 +25,24 @@ jobs:
     outputs:
       script-file: ${{ steps.publish.outputs.script-file }}
     steps:
-      - name: Get code
+      - name: Récupère le code
         uses: actions/checkout@v4
-      - name: Use Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           cache: 'npm'
-      - name: Install dependencies
+      - name: Installe les dépendances
         run: npm ci
-      - name: Build website
+      - name: Build
         run: npm run build
-      - name: Publish JS filename
-        id: publish
-        run: find dist/assets/*.js -type f -execdir echo 'script-file={}' >> $GITHUB_OUTPUT ';'
-      - name: Upload artifacts
+      # - name: Publish JS filename
+      #   id: publish
+      #   run: find dist/assets/*.js -type f -execdir echo 'script-file={}' >> $GITHUB_OUTPUT ';'
+      - name: Upload l'artéfact de build
         uses: actions/upload-artifact@v4
         with:
-          name: dist-files
-          path: dist
+          name: dist-files # Nom qu'on donne à l'artéfact
+          path: dist # Fichier(s) à uploader
           # path: |
           #   dist
           #   package.json
@@ -50,13 +50,13 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Get build artifacts
+      - name: Récupère l'artéfact
         uses: actions/download-artifact@v4
         with:
           name: dist-files
-      - name: Output contents
+      - name: Liste les fichiers
         run: ls
-      - name: Output filename
-        run: echo "${{ needs.build.outputs.script-file }}"
-      - name: Deploy
-        run: echo "Deploying..."
+      # - name: Output filename
+      #   run: echo "${{ needs.build.outputs.script-file }}"
+      - name: Déploiement
+        run: echo "En cours de déploiement..."

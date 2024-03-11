@@ -1,8 +1,8 @@
-name: "Premier workflow"
+name: "Premier workflow avec cache"
 on: push
 jobs:
   get-code:
-    name: "Récupère le code et installe les dépendances"
+    name: "dfgdgdfgdrf"
     runs-on: ubuntu-latest
     steps:
       - name: Récupère le code
@@ -13,26 +13,10 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
-
-  lint:
-    name: "Premier job de ${{ github.actor }} : lint"
-    runs-on: ubuntu-latest
-    steps:
       - name : "lint"
         run: npm run lint
-  test:
-    needs: lint
-    name: "2e job pour ${{ github.repository }} : test"
-    runs-on: ubuntu-latest
-    steps:
-    - name: "Exécute les tests"
-      run: npm run test
-  deploy:
-    needs: test
-    name: "3e job : déploiement"
-    runs-on: ubuntu-latest
-    steps:
-
+      - name: "Exécute les tests"
+        run: npm run test
       - name: "Build le code"
         run: npm run build
       - name: "Déploiement"

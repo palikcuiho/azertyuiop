@@ -13,4 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: premier_job
     steps:
-      - run: echo ${{ needs.premier_job.outputs.variable1 }} ${{ needs.premier_job.outputs.variable2 }}
+      - id: etape1
+        run: echo ${{ needs.premier_job.outputs.variable1 }} ${{ needs.premier_job.outputs.variable2 }}
+      - id: etape2
+        run: echo ${{ toJSON(needs.premier_job.outputs) }}
+      - id: etape3
+        run: echo ${{ toJSON(needs.premier_job) }}

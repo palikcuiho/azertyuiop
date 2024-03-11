@@ -1,17 +1,17 @@
-name: "Premier workflow"
+name: Premier workflow
 on: push
 jobs:
   job1:
-    name: "Premier job"
+    name: Premier job
     runs-on: ubuntu-latest
     steps:
-      - name: "Récupère le code"
+      - name: Récupère le code
         uses: actions/checkout@v4
-      - name: "Installe les dépendances"
+      - name: Installe les dépendances
         run: npm ci
-      - name : "lint"
+      - name : lint
         run: npm run lint
-      - name: "Exécute les tests"
+      - name: Exécute les tests
         run: npm run test
-      - run: echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
+
         

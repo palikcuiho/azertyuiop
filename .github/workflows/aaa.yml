@@ -3,7 +3,7 @@ name: Workflow réutilisé
 on:
   workflow_dispatch:
 
-  workflow_call: # Déclencheur : lorsque le workflow est appelé part un autre workflow
+  workflow_call: # Déclencheur : lorsque le workflow est appelé par un autre workflow
     # Définit les outputs du workflow, en les mappant avec les outputs du job job1
     outputs:
       variable1:

@@ -1,0 +1,39 @@
+name: "Premier workflow"
+on: push
+jobs:
+  get-code:
+    name: "Récupère le code et installe les dépendances"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupère le code
+        uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm ci
+
+  lint:
+    name: "Premier job de ${{ github.actor }} : lint"
+    runs-on: ubuntu-latest
+    steps:
+      - name : "lint"
+        run: npm run lint
+  test:
+    needs: lint
+    name: "2e job pour ${{ github.repository }} : test"
+    runs-on: ubuntu-latest
+    steps:
+    - name: "Exécute les tests"
+      run: npm run test
+  deploy:
+    needs: test
+    name: "3e job : déploiement"
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: "Build le code"
+        run: npm run build
+      - name: "Déploiement"
+        run: echo "En cours de déploiement..."

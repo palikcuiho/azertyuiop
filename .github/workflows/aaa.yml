@@ -10,22 +10,21 @@ on:
       variable2:
         description: "Deuxième output"
         value: ${{ jobs.job1.outputs.sortie2 }}
-      variable3:
-        description: "Troisième output"
-        value: ${{ jobs.job1.outputs.sortie3 }}
 
 jobs:
   job1:
     name: Génère les outputs
     runs-on: ubuntu-latest
-    # Map les outputs du job job1 avec les outputs des steps etape1 et etape2
-    outputs:
-      sortie1: ${{ steps.etape1.outputs.variable1 }}
-      sortie2: ${{ steps.etape2.outputs.variable2 }}
-      sortie3: ${{ steps.etape1.outputs.variable1 }} ${{ steps.etape2.outputs.variable2 }}
+    outputs: # Map les outputs du job job1 avec les outputs des steps etape1 et etape2
+      sortie1: ${{ steps.etape1.outputs.var1 }}
+      sortie2: ${{ steps.etape2.outputs.var2 }}
     steps:
       - id: etape1
-        run: echo "variable1=Hello" >> $GITHUB_OUTPUT # définir la variable variable1 dans le fichier d’environnement GITHUB_OUTPUT pour pouvoir la récupérer par la suite
+        # On récupère la sortie dans GITHUB_OUTPUT pour pouvoir la réutiliser par la suite
+        # GITHUB_OUTPUT est un fichier d'environnement partagé entre tous les steps d'un job
+        run: echo "var1=Hello" >> $GITHUB_OUTPUT 
       - id: etape2
-        run: echo "variable2=world!" >> $GITHUB_OUTPUT
+        run: echo "var2=world!" >> $GITHUB_OUTPUT
+      - id: etape3
+        run: echo ${{ steps.etape1.outputs.var1 }}${{ steps.etape2.outputs.var2 }}
 

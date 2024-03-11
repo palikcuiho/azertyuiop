@@ -1,26 +1,27 @@
-name: Reusable workflow
+name: Workflow réutilisé
 
 on:
+  # Lorsque le workflow est appelé
   workflow_call:
-    # Map the workflow outputs to job outputs
+    # Map les outputs du workflow avec les outputs du job
     outputs:
-      firstword:
-        description: "The first output string"
-        value: ${{ jobs.example_job.outputs.output1 }}
-      secondword:
-        description: "The second output string"
-        value: ${{ jobs.example_job.outputs.output2 }}
+      variable1:
+        description: "Premier output"
+        value: ${{ jobs.job1.outputs.sortie1 }}
+      variable2:
+        description: "Deuxième output"
+        value: ${{ jobs.job1.outputs.sortie2 }}
 
 jobs:
-  example_job:
-    name: Generate output
+  job1:
+    name: Génère les outputs
     runs-on: ubuntu-latest
-    # Map the job outputs to step outputs
+    # Map les outputs du job avec les outputs des steps
     outputs:
-      output1: ${{ steps.step1.outputs.firstword }}
-      output2: ${{ steps.step2.outputs.secondword }}
+      sortie1: ${{ steps.etape1.outputs.variable1 }}
+      sortie2: ${{ steps.etape2.outputs.variable2 }}
     steps:
-      - id: step1
-        run: echo "firstword=hello" >> $GITHUB_OUTPUT
-      - id: step2
-        run: echo "secondword=world" >> $GITHUB_OUTPUT
+      - id: etape1
+        run: echo "variable1=hello" >> $GITHUB_OUTPUT
+      - id: etape2
+        run: echo "variable2=world" >> $GITHUB_OUTPUT

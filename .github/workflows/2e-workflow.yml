@@ -1,11 +1,11 @@
-name: "Workflow de folie"
+name: "Workflow nouvelle issue"
 on: 
   issues:
     types: 
       - opened
 jobs : 
   job1:
-    name : "echoo"
+    name : "echo 'Nouvelle issue'"
     runs-on : ubuntu-latest
     steps :
       - run : echo "Nouvelle issue :" ${{ github.event.issue.title}} \(${{ github.event.issue.html_url }}\)

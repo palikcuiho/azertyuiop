@@ -11,4 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     needs: premier_job
     steps:
-      - run: echo ${{ needs.premier_job.outputs.sortie1 }} ${{ needs.premier_job.outputs.sortie2 }}
+      - run: echo ${{ needs.premier_job.outputs.variable1 }} ${{ needs.premier_job.outputs.variable2 }}

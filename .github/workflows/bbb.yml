@@ -21,4 +21,9 @@ jobs:
         run: echo $JSON
         env:
           JSON: ${{  toJSON(needs.premier_job.outputs) }}
+      - id: etape3
+        name: "needs.premier_job"
+        run: echo $JSON
+        env:
+          JSON: ${{  toJSON(needs.premier_job) }}
 

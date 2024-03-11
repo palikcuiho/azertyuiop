@@ -2,7 +2,7 @@ name: Workflow réutilisé
 
 on:  
   workflow_call: # Déclencheur : lorsque le workflow est appelé
-    # Map les outputs du workflow avec les outputs du job
+    # Map les outputs du workflow avec les outputs du job job1
     outputs:
       variable1:
         description: "Premier output"
@@ -10,18 +10,22 @@ on:
       variable2:
         description: "Deuxième output"
         value: ${{ jobs.job1.outputs.sortie2 }}
+      variable3:
+        description: "Troisième output"
+        value: ${{ jobs.job1.outputs.sortie3 }}
 
 jobs:
   job1:
     name: Génère les outputs
     runs-on: ubuntu-latest
-    # Map les outputs du job avec les outputs des steps
+    # Map les outputs du job job1 avec les outputs des steps etape1 et etape2
     outputs:
       sortie1: ${{ steps.etape1.outputs.variable1 }}
       sortie2: ${{ steps.etape2.outputs.variable2 }}
+      sortie3: ${{ steps.etape1.outputs.variable1 }} ${{ steps.etape2.outputs.variable2 }}
     steps:
       - id: etape1
-        run: echo "variable1=Hello" >> $GITHUB_OUTPUT
+        run: echo "variable1=Hello" >> $GITHUB_OUTPUT # définir la variable variable1 dans le fichier d’environnement GITHUB_OUTPUT pour pouvoir la récupérer par la suite
       - id: etape2
         run: echo "variable2=world!" >> $GITHUB_OUTPUT
 

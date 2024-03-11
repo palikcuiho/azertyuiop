@@ -21,6 +21,4 @@ jobs:
         run: npm run build
       - name: "Déploiement"
         run: echo "En cours de déploiement..."
-      - run: echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
-"
-        
+

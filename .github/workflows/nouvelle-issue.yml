@@ -5,14 +5,12 @@ on:
       - opened
 jobs : 
   job1:
-    name : "echo 'Nouvelle issue'"
+    name : "echo 'Nouvelle issue - titre'"
     runs-on : ubuntu-latest
     steps :
       - run : echo Nouvelle issue - ${{ github.event.issue.title}}
       # Injection de script possible
-      # env: TITLE=${{ github.event.issue.title}}
-      # run: echo $TITLE
-      - env: 
-          TITLE: ${{ github.event.issue.title}}
-        run: echo Nouvelle issue - $TITLE
+      # - env: 
+      #     TITLE: ${{ github.event.issue.title}}
+      #   run: echo Nouvelle issue - $TITLE
 

@@ -11,7 +11,7 @@ jobs :
       - run : echo Nouvelle issue ! ${{ github.event.issue.title}} - ${{ github.event.issue.html_url }}
       # Injection de script possible
       # env: TITLE=${{ github.event.issue.title}}
-      # run: echo "$TITLE"
+      # run: echo $TITLE
       - env: TITLE=${{ github.event.issue.title}}
-        run: echo Nouvelle issue ! "$TITLE" 
+        run: echo Nouvelle issue ! $TITLE
 

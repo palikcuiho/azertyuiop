@@ -1,5 +1,5 @@
 name: Workflow nouvelle issue
-run-name: Créationn d'une nouvelle issue
+run-name: Création d'une nouvelle issue
 on: 
   issues:
     types: 

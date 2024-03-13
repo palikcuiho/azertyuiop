@@ -5,7 +5,7 @@ on:
       - opened
 jobs : 
   job1:
-    name : "echo 'Nouvelle issue - titre'"
+    name : echo Nouvelle issue - titre
     runs-on : ubuntu-latest
     steps :
       - run : echo Nouvelle issue - ${{ github.event.issue.title}}

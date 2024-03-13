@@ -8,9 +8,10 @@ jobs :
     name : echo Nouvelle issue - titre
     runs-on : ubuntu-latest
     steps :
-      - run : echo Nouvelle issue - ${{ github.event.issue.title}}
-      # Injection de script possible
-      # - env: 
-      #     TITLE: ${{ github.event.issue.title}}
-      #   run: echo Nouvelle issue - $TITLE
+      - id: sans-env
+        run : echo Nouvelle issue - ${{ github.event.issue.title}} # -→ Injection de script possible !
+      - id: avec-env
+        env: 
+          TITLE: ${{ github.event.issue.title}}
+        run: echo Nouvelle issue - $TITLE
 

@@ -16,9 +16,9 @@ jobs:
       - id: etape1
         name: "Retourne 'Hello world!'"
         run: echo ${{ needs.premier_job.outputs.variable1 }} ${{ needs.premier_job.outputs.variable2 }}
-      - id: etape2
-        name: "Affiche le contenu de 'needs'"
-        run: echo $JSON # { "premier_job": { "result": "success", "outputs": { "variable1": "Hello", "variable2": "world!" } } }
-        env:
-          JSON: ${{  toJSON(needs) }}        
+      # - id: etape2
+      #   name: "Affiche le contenu de 'needs'"
+      #   run: echo $JSON # { "premier_job": { "result": "success", "outputs": { "variable1": "Hello", "variable2": "world!" } } }
+      #   env:
+      #     JSON: ${{  toJSON(needs) }}        
 

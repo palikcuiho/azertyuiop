@@ -1,4 +1,5 @@
-name: "Workflow nouvelle issue"
+name: Workflow nouvelle issue
+run-name: Créationn d'une nouvelle issue
 on: 
   issues:
     types: 
@@ -8,7 +9,8 @@ jobs :
     name : echo Nouvelle issue - titre
     runs-on : ubuntu-latest
     steps :
-      - run: |
+      - name: Sommaire
+        run: |
           echo "# Atténuer le risque d'injection de script" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "Un workflow qui illustre l'intérêt d'utiliser une variable d'environnement intermédiaire pour éviter l'injection de code" >> $GITHUB_STEP_SUMMARY

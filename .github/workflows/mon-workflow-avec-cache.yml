@@ -1,8 +1,7 @@
-name: "Premier workflow avec cache"
+name: "Workflow avec cache"
 on: push
 jobs:
   get-code:
-    name: "dfgdgdfgdrf"
     runs-on: ubuntu-latest
     steps:
       - name: Récupère le code

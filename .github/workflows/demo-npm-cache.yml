@@ -29,6 +29,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           cache: 'npm'
+        # The action follows actions/cache guidelines, and caches global cache on the machine instead of node_modules,
+        # so cache can be reused between different Node.js versions.
       - name: Installe les dépendances
         run: npm ci
       - name: Build

@@ -1,4 +1,4 @@
-name: Comment when opened
+name: Commentaire sur les nouvelles issues
 on:
   issues:
     types:

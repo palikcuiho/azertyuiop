@@ -8,10 +8,14 @@ jobs :
     name : echo Nouvelle issue - titre
     runs-on : ubuntu-latest
     steps :
-      - id: sans-env
+      - run: |
+        echo "# Atténuer le risque d'injection de script " >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "Un workflow pour illustrer l'intérêt d'utiliser une variable d'environnement intermédiaire pour éviter l'injection de code" >> $GITHUB_STEP_SUMMARY
+      - name: Sans env
         run : echo Nouvelle issue - ${{ github.event.issue.title}} # -→ Injection de script possible !
-      - id: avec-env
+      - name: Avec env
         env: 
           TITLE: ${{ github.event.issue.title}}
-        run: echo Nouvelle issue - $TITLE
+        run: echo Nouvelle issue - "$TITLE"
 

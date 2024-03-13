@@ -9,9 +9,9 @@ jobs :
     runs-on : ubuntu-latest
     steps :
       - run: |
-        echo "# Atténuer le risque d'injection de script " >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "Un workflow qui illustre l'intérêt d'utiliser une variable d'environnement intermédiaire pour éviter l'injection de code" >> $GITHUB_STEP_SUMMARY
+          echo "# Atténuer le risque d'injection de script" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Un workflow qui illustre l'intérêt d'utiliser une variable d'environnement intermédiaire pour éviter l'injection de code" >> $GITHUB_STEP_SUMMARY
       - name: Sans env
         run : echo Nouvelle issue - ${{ github.event.issue.title}} # -→ Injection de script possible !
       - name: Avec env

@@ -1,8 +1,9 @@
 name: "Workflow avec cache"
 on: push
 jobs:
-
   get-code:
+    outputs:  
+      statut-tests: ${{ steps.run-test.outcome }}
     runs-on: ubuntu-latest
     steps:
       - name: Récupère le code
@@ -27,9 +28,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: get-code
     steps:
-      - run: echo Résultat des tests -> echo "$NEEDS_JSON"
+      - run: echo Résultat des tests -> echo "JSON"
         env:
-          NEEDS_JSON: ${{ toJSON(needs) }}
+          JSON: ${{ toJSON(needs.get-code)) }}
       # - run: echo Résultat des tests -> ${{toJSON(needs.get-code)}}
       # - run: echo Résultat des tests -> ${{toJSON(needs.get-code.steps)}}
       # - run: echo Résultat des tests -> ${{toJSON(needs.get-code.steps.run-test)}}

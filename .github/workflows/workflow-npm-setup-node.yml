@@ -14,12 +14,17 @@ jobs:
         run: npm ci ######################################################## check cache !
       - name : "lint"
         run: npm run lint
-      - name: "Exécute les tests"
-        run: |
-            output=$(npm run test)
-            echo "output=$output" >> $GITHUB_OUTPUT
+      - id: run-test
+        name: "Exécute les tests"
+        run: npm run test 
       - name: "Build le code"
         run: npm run build
       - name: "Déploiement"
         run: echo "En cours de déploiement..."
+  job-2:
+    needs: get-code
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Résultat des tests -> ${{needs.get-code.steps.run-test.result}}
+
 

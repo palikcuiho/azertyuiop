@@ -11,11 +11,12 @@ jobs:
         with:
           cache: 'npm'
       - name: Install dependencies
-        run: npm ci
+        run: npm ci ######################################################## check cache !
       - name : "lint"
         run: npm run lint
       - name: "Exécute les tests"
-        run: npm run test
+        run: npm run test >> $GITHUB_OUTPUT
+      - run: echo $GITHUB_OUTPUT
       - name: "Build le code"
         run: npm run build
       - name: "Déploiement"

@@ -14,7 +14,7 @@ jobs:
         with:
           cache: 'npm'
       - name: Installe les dépendances
-        run: npm ci
+        run: npm ci ################################################################# check cache ! npm ci --cache .npm ?
       - name: Lint
         run: npm run lint
       - name: Test
@@ -32,7 +32,7 @@ jobs:
         # The action follows actions/cache guidelines, and caches global cache on the machine instead of node_modules,
         # so cache can be reused between different Node.js versions.
       - name: Installe les dépendances
-        run: npm ci
+        run: npm ci ################################################################# npm ci --prefer-offline ?
       - name: Build
         run: npm run build
       - name: Upload l'artéfact de build

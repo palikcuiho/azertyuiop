@@ -17,7 +17,7 @@ jobs:
           path: 'node_modules'
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
-        # only run npm i if cache not found
+        # only run npm ci if cache not found
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
       - name: Lint code
@@ -40,7 +40,7 @@ jobs:
           path: 'node_modules'
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
-        # only run npm i if cache not found
+        # only run npm ci if cache not found
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
       - name: Build website

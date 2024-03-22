@@ -15,8 +15,9 @@ jobs:
       - name : "lint"
         run: npm run lint
       - name: "Exécute les tests"
-        run: npm run test >> $GITHUB_OUTPUT
-      - run: echo $GITHUB_OUTPUT
+        run: |
+            output=$(npm run test)
+            echo "output=$output" >> $GITHUB_OUTPUT
       - name: "Build le code"
         run: npm run build
       - name: "Déploiement"

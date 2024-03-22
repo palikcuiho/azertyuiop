@@ -28,11 +28,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: get-code
     steps:
-      - run: echo Résultat des tests -> echo "JSON"
+      - run: echo Résultat des tests -> ${{needs.get-code.outputs.statut-tests}}
         env:
           JSON: ${{ toJSON(needs) }}
       # - run: echo Résultat des tests -> ${{toJSON(needs.get-code)}}
-      # - run: echo Résultat des tests -> ${{toJSON(needs.get-code.steps)}}
+      # - run: echo Résultat des tests -> ${{toJSON(needs.get-code.outputs.statut-tests)}}
       # - run: echo Résultat des tests -> ${{toJSON(needs.get-code.steps.run-test)}}
 
 

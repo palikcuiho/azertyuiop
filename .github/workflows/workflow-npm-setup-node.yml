@@ -26,8 +26,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo Résultat des tests -> ${{toJSON(needs)}}
-      - run: echo Résultat des tests -> ${{toJSON(needs.get-code)}}
-      - run: echo Résultat des tests -> ${{toJSON(needs.get-code.steps)}}
-      - run: echo Résultat des tests -> ${{toJSON(needs.get-code.steps.run-test)}}
+      # - run: echo Résultat des tests -> ${{toJSON(needs.get-code)}}
+      # - run: echo Résultat des tests -> ${{toJSON(needs.get-code.steps)}}
+      # - run: echo Résultat des tests -> ${{toJSON(needs.get-code.steps.run-test)}}
 
 

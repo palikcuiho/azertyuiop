@@ -2,9 +2,9 @@ name: "Workflow avec cache"
 on: push
 jobs:
   get-code:
+    runs-on: ubuntu-latest
     outputs:  
       statut-tests: ${{ steps.run-test.outcome }}
-    runs-on: ubuntu-latest
     steps:
       - name: Récupère le code
         uses: actions/checkout@v4
@@ -30,7 +30,7 @@ jobs:
     steps:
       - run: echo Résultat des tests -> echo "JSON"
         env:
-          JSON: ${{ toJSON(needs.get-code)) }}
+          JSON: ${{ toJSON(needs)) }}
       # - run: echo Résultat des tests -> ${{toJSON(needs.get-code)}}
       # - run: echo Résultat des tests -> ${{toJSON(needs.get-code.steps)}}
       # - run: echo Résultat des tests -> ${{toJSON(needs.get-code.steps.run-test)}}

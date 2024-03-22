@@ -30,7 +30,7 @@ jobs:
     steps:
       - run: echo Résultat des tests -> echo "JSON"
         env:
-          JSON: ${{ toJSON(needs)) }}
+          JSON: ${{ toJSON(needs) }}
       # - run: echo Résultat des tests -> ${{toJSON(needs.get-code)}}
       # - run: echo Résultat des tests -> ${{toJSON(needs.get-code.steps)}}
       # - run: echo Résultat des tests -> ${{toJSON(needs.get-code.steps.run-test)}}
